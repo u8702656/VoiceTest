@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class BGMControl : MonoBehaviour
 {
     public AudioSource audioSource;
-    public Text btnText;
+    public Text textBGM;
+    public Slider sliderVolume;
     public void PlayBGM() {
-        if (audioSource.isPlaying) {
-            audioSource.Stop();
-            btnText.text = "Play BGM";
-        } else {
-            audioSource.Play(0);
-            btnText.text = "Stop BGM";
-        }
+        audioSource.enabled = !audioSource.enabled;
+        textBGM.text = audioSource.enabled ? "Stop BGM" : "Play BGM";
+        audioSource.volume = sliderVolume.value;
+    }
+    public void SetVoume(float value) {
+        audioSource.volume = sliderVolume.value;
     }
 }
